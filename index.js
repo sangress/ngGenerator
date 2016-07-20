@@ -16,9 +16,9 @@ function generateFile(templateFile, componentName) {
 	let componentNameCamel = _.upperFirst(componentSelectorName);
 
 	return compiled({
-		componentName: componentName, 
-		componentNameCamel: componentNameCamel, 
-		componentSelectorName: componentSelectorName
+		componentName, 
+		componentNameCamel, 
+		componentSelectorName
 	});
 }
 
@@ -43,7 +43,7 @@ inquirer.prompt([{
 		name: 'componentName',
 		message: 'component name? (this will be the folder name.)'
 	}]).then(answer => {				
-		let componentPath = path + '/' + answer.componentName;
+		let componentPath = componentsPath + '/' + answer.componentName;
 		fs.mkdirSync(componentPath);
 
 		let componentFile = generateFile(config.templatesPath + 'component.ts', answer.componentName);
