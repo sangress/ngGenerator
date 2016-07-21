@@ -25,7 +25,12 @@ function generateFile(templateFile, componentName) {
 
 
 let componentsPath = config.componentsPath; 
-let path = process.argv[2];
+let path = _.get(process, 'argv[2]', null);
+
+if (path) {
+	componentsPath = path;
+}
+
 inquirer.prompt([{
 	type: 'list',
 	name: 'type',
